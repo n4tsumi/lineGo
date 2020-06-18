@@ -2,22 +2,29 @@ package line
 
 import (
 	"context"
+	"log"
 
-	talk "./talkservice"
+	talk "../talkservice"
 
-	"./login"
+	"../login"
 )
 
-type Clinet struct {
+type Client struct {
 	talk     *talk.TalkServiceClient
 	poll     *talk.TalkServiceClient
-	revision int64
+	Revision int64
 	ctx      context.Context
+	Profile  *talk.Profile
 }
 
-func Line(token, appName) line {
+func NewClient(token, appName string) Client {
 	ctx := context.Background()
 	talk := login.Talk(token, appName)
 	poll := login.Poll(token, appName)
-	return Clinet{talk: talk, poll: poll, revision: -1, ctx: ctx}
+	profile, err := talk.GetProfile(ctx, 0)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println(profile.DisplayName + ": login success")
+	return Client{talk: talk, poll: poll, Revision: -1, ctx: ctx, Profile: profile}
 }
