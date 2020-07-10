@@ -1,15 +1,14 @@
 package main
 
 import (
+	. "./line"
+	talk "./talkservice"
 	"fmt"
 	"strconv"
 	"time"
-
-	. "./line"
-	talk "./talkservice"
 )
 
-var client = NewClient("token", "IOS")
+var client = NewClient("", "MAC")
 
 func main() {
 	operation()
@@ -36,19 +35,12 @@ func bot(op *talk.Operation) {
 	switch op.Type {
 	case 26:
 		msg := op.Message
-		switch msg.Text {
-		case ".speed":
+		if msg.Text == ".speed" {
 			start := time.Now()
-			client.SendMessage(msg.To, "Start")
+			client.SendMessage(msg.To, "start")
 			end := time.Now()
 			t := strconv.FormatFloat(end.Sub(start).Seconds(), 'f', 8, 64)
 			client.SendMessage(msg.To, t)
-		case "^^":
-			client.SendMessage(msg.To, "^^")
-		case ".test":
-			client.SendMessage(msg.To, "Hello Go")
-		case ".mid":
-			client.SendMessage(msg.To, client.Profile.Mid)
 		}
 	}
 }
