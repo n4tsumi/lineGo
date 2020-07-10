@@ -1,14 +1,15 @@
 package main
 
 import (
-	. "./line"
-	talk "./talkservice"
 	"fmt"
 	"strconv"
 	"time"
+
+	. "./line"
+	talk "./talkservice"
 )
 
-var client = NewClient("", "MAC")
+var client = NewClient("TOKEN HERE", "MAC")
 
 func main() {
 	operation()
