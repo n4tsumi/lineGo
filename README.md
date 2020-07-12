@@ -1,6 +1,6 @@
 # lineGo
 
-** Golang lib for line unofficial API **
+**Golang lib for line unofficial API**
 
 ## Important
 
