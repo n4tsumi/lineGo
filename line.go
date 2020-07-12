@@ -1,7 +1,7 @@
 package lineGo
 
 import (
-	talk "./talkservice"
+	talk "github.com/n4tsumi/lineGo/talkservice"
 	"log"
 	"net/http"
 )

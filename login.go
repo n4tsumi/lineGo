@@ -1,7 +1,7 @@
 package lineGo
 
 import (
-	talk "./talkservice"
+	talk "github.com/n4tsumi/lineGo/talkservice"
 	"github.com/apache/thrift/lib/go/thrift"
 	"log"
 	"net/http"
