@@ -36,10 +36,10 @@ func chatBot(op *talk.Operation) {
 
 	switch {
 	case msg.Text == "hello":
-		cl.SendText(x.To, "Hello!")
+		cl.SendText(msg.To, "Hello!")
 
 	case msg.Text == "time":
-		cl.SendText(x.To, time.Now().Format("2006/01/02 15:04:05"))
+		cl.SendText(msg.To, time.Now().Format("2006/01/02 15:04:05"))
 	}
 }
 ```
